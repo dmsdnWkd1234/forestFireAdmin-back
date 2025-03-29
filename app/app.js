@@ -1,4 +1,5 @@
 'use strict';
+//nodejs server default setting
 
 //모듈
 const express = require('express');

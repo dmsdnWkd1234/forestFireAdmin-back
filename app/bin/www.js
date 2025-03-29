@@ -1,4 +1,5 @@
 'use strict';
+//server file
 
 const app = require('../app');
 const PORT = 3000;
