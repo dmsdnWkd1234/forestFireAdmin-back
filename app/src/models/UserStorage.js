@@ -3,7 +3,7 @@
 //데이터를 가지고 있는 파일
 //그러한 데이터를 처리해주는 로직
 
-const fs = require('fs').promises;
+const db = require('../config/db');
 
 class UserStorage {
     static #getUserInfo(data, id) {
@@ -31,34 +31,26 @@ class UserStorage {
         }, {});
         return newUsers;
     }
-    static getUsers(isAll, ...fields) {
-        return fs
-            .readFile('./src/databases/users.json')
-            .then((data) => {
-                return this.#getUsers(data, fields);
-            })
-            .catch(console.error);
-    }
+    static getUsers(isAll, ...fields) {}
 
     static getUserInfo(id) {
-        return fs
-            .readFile('./src/databases/users.json')
-            .then((data) => {
-                return this.#getUserInfo(data, id);
-            })
-            .catch(console.error);
+        const query = 'SELECT * FROM users WHERE id = ?;';
+        return new Promise((resolve, reject) => {
+            db.query(query, [id], (err, data) => {
+                if (err) reject(`${err}`);
+                resolve(data[0]);
+            });
+        });
     }
 
     static async save(userInfo) {
-        const users = await this.getUsers(true);
-        if (users.id.includes(userInfo.id)) {
-            throw '이미 존재하는 아이디';
-        }
-        users.id.push(userInfo.id);
-        users.password.push(userInfo.password);
-        users.name.push(userInfo.name);
-        fs.writeFile('./src/databases/users.json', JSON.stringify(users));
-        return { success: true };
+        const query = 'INSERT INTO users(id, name, password) VALUES(?, ?, ?);';
+        return new Promise((resolve, reject) => {
+            db.query(query, [userInfo.id, userInfo.name, userInfo.password], (err) => {
+                if (err) reject(`${err}`);
+                resolve({ success: true });
+            });
+        });
     }
 }
 
