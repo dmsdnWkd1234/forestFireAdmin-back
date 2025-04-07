@@ -1,6 +1,7 @@
 'use strict';
 
-const User = require('../../models/User');
+const Mesh = require('../../models/mesh/Mesh');
+const User = require('../../models/user/User');
 
 const output = {
     home: (req, res) => {
@@ -11,6 +12,12 @@ const output = {
     },
     register: (req, res) => {
         res.render('home/register');
+    },
+
+    mesh: async (req, res) => {
+        const mesh = new Mesh(req.body);
+        const response = await mesh.showMesh();
+        return res.json(response);
     },
 };
 

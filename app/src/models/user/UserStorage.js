@@ -3,7 +3,7 @@
 //데이터를 가지고 있는 파일
 //그러한 데이터를 처리해주는 로직
 
-const db = require('../config/db');
+const db = require('../../config/db');
 
 class UserStorage {
     static #getUserInfo(data, id) {
