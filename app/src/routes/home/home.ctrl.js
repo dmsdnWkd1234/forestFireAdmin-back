@@ -1,40 +1,47 @@
 'use strict';
 
 const Mesh = require('../../models/mesh/Mesh');
+const Notice = require('../../models/notice/Notice');
 const User = require('../../models/user/User');
 
 const output = {
-    home: (req, res) => {
-        res.render('home/index');
-    },
-    login: (req, res) => {
-        res.render('home/login');
-    },
-    register: (req, res) => {
-        res.render('home/register');
-    },
+  home: (req, res) => {
+    res.render('home/index');
+  },
+  login: (req, res) => {
+    res.render('home/login');
+  },
+  register: (req, res) => {
+    res.render('home/register');
+  },
 
-    mesh: async (req, res) => {
-        const mesh = new Mesh(req.body);
-        const response = await mesh.showMesh();
-        return res.json(response);
-    },
+  mesh: async (req, res) => {
+    const mesh = new Mesh(req.body);
+    const response = await mesh.showMesh();
+    return res.json(response);
+  },
+
+  notice: async (req, res) => {
+    const notice = new Notice(req.body);
+    const response = await notice.showNotice();
+    return res.json(response);
+  },
 };
 
 const process = {
-    login: async (req, res) => {
-        const user = new User(req.body);
-        const response = await user.login();
-        return res.json(response);
-    },
-    register: async (req, res) => {
-        const user = new User(req.body);
-        const response = await user.register();
-        return res.json(response);
-    },
+  login: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.login();
+    return res.json(response);
+  },
+  register: async (req, res) => {
+    const user = new User(req.body);
+    const response = await user.register();
+    return res.json(response);
+  },
 };
 
 module.exports = {
-    output,
-    process,
+  output,
+  process,
 };
