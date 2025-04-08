@@ -39,6 +39,11 @@ const process = {
     const response = await user.register();
     return res.json(response);
   },
+  postNotice: async (req, res) => {
+    const notice = new Notice(req.body);
+    const response = await notice.postNotice();
+    return res.json(response);
+  },
 };
 
 module.exports = {

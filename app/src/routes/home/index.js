@@ -13,5 +13,6 @@ router.get('/notice', ctrl.output.notice);
 
 router.post('/login', ctrl.process.login);
 router.post('/register', ctrl.process.register);
+router.post('/createNotice', ctrl.process.postNotice);
 
 module.exports = router;
