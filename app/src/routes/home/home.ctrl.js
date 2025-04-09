@@ -2,6 +2,7 @@
 
 const Mesh = require('../../models/mesh/Mesh');
 const Notice = require('../../models/notice/Notice');
+const Report = require('../../models/reports/report');
 const User = require('../../models/user/User');
 
 const output = {
@@ -24,6 +25,12 @@ const output = {
   notice: async (req, res) => {
     const notice = new Notice(req.body);
     const response = await notice.showNotice();
+    return res.json(response);
+  },
+
+  report: async (req, res) => {
+    const report = new Report(req.body);
+    const response = await report.showReport();
     return res.json(response);
   },
 };

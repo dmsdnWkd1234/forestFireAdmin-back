@@ -10,6 +10,7 @@ router.get('/login', ctrl.output.login);
 router.get('/register', ctrl.output.register);
 router.get('/mesh', ctrl.output.mesh);
 router.get('/notice', ctrl.output.notice);
+router.get('/report', ctrl.output.report);
 
 router.post('/login', ctrl.process.login);
 router.post('/register', ctrl.process.register);
