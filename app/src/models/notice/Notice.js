@@ -2,6 +2,8 @@
 
 const NoticeList = require('./NoticeList');
 const CreateNotice = require('./CreateNotice');
+const DeleteNotice = require('./DeleteNotice');
+const UpdateNotice = require('./UpdateNotice');
 
 class Notice {
   constructor(body) {
@@ -19,6 +21,26 @@ class Notice {
     const client = this.body;
     try {
       const response = await CreateNotice.postNotice(client);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err };
+    }
+  }
+
+  async deleteNotice() {
+    const client = this.body;
+    try {
+      const response = await DeleteNotice.delete(client);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err };
+    }
+  }
+
+  async updateNotice() {
+    const client = this.body;
+    try {
+      const response = await UpdateNotice.update(client);
       return response;
     } catch (err) {
       return { success: false, msg: err };

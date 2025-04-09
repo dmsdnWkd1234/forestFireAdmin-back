@@ -46,10 +46,22 @@ const process = {
     const response = await user.register();
     return res.json(response);
   },
-  postNotice: async (req, res) => {
-    const notice = new Notice(req.body);
-    const response = await notice.postNotice();
-    return res.json(response);
+  notice: {
+    post: async (req, res) => {
+      const notice = new Notice(req.body);
+      const response = await notice.postNotice();
+      return res.json(response);
+    },
+    delete: async (req, res) => {
+      const notice = new Notice(req.body);
+      const response = await notice.deleteNotice();
+      return res.json(response);
+    },
+    update: async (req, res) => {
+      const notice = new Notice(req.body);
+      const response = await notice.updateNotice();
+      return res.json(response);
+    },
   },
 };
 
