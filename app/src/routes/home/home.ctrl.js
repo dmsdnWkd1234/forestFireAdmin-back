@@ -2,7 +2,7 @@
 
 const Mesh = require('../../models/mesh/Mesh');
 const Notice = require('../../models/notice/Notice');
-const Report = require('../../models/reports/report');
+const Report = require('../../models/reports/Report');
 const User = require('../../models/user/User');
 
 const output = {
