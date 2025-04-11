@@ -10,9 +10,10 @@ const specs = swaggerJsDoc(swaggerOptions);
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 //CORS
-const cors = require('cors');
+
 app.use(cors());
 
 const app = express();
