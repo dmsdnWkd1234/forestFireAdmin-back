@@ -11,13 +11,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const cors = require('cors');
-
-//CORS
-
-app.use(cors());
-
 const app = express();
 dotenv.config();
+
+app.use(cors());
 
 //라우팅
 const home = require('./src/routes/home');
