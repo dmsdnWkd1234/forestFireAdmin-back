@@ -4,12 +4,17 @@ const db = require('../../config/db');
 
 class UpdateNotice {
   static async update(notice) {
-    const query = 'UPDATE notice SET title = ?, content = ? WHERE id = ?';
+    const query =
+      'UPDATE notice SET title = ?, type = ?, content = ? WHERE id = ?';
     return new Promise((resolve, reject) => {
-      db.query(query, [notice.title, notice.content, notice.id], (err) => {
-        if (err) reject(`${err}`);
-        resolve({ success: true });
-      });
+      db.query(
+        query,
+        [notice.title, notice.type, notice.content, notice.id],
+        (err) => {
+          if (err) reject(`${err}`);
+          resolve({ success: true });
+        }
+      );
     });
   }
 }
