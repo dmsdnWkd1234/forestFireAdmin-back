@@ -1,6 +1,7 @@
 'use strict';
 
-const NoticeList = require('./NoticeList');
+const GetNoticeById = require('./GetNoticeById');
+const GetAllNotices = require('./GetAllNotices');
 const CreateNotice = require('./CreateNotice');
 const DeleteNotice = require('./DeleteNotice');
 const UpdateNotice = require('./UpdateNotice');
@@ -9,9 +10,17 @@ class Notice {
   constructor(body) {
     this.body = body;
   }
-  async showNotice() {
+  async getNoticeById(id) {
     try {
-      const response = await NoticeList.getNoticeList();
+      const response = await GetNoticeById.getNoticeById(id);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err };
+    }
+  }
+  async getAllNotices() {
+    try {
+      const response = await GetAllNotices.getAllNotices();
       return response;
     } catch (err) {
       return { success: false, msg: err };

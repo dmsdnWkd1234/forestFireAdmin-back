@@ -2,8 +2,8 @@
 
 const db = require('../../config/db');
 
-class NoticeList {
-  static getNoticeList = () => {
+class GetAllNotices {
+  static getAllNotices = () => {
     const query = 'SELECT * FROM notice;';
     return new Promise((resolve, reject) => {
       db.query(query, (err, data) => {
@@ -14,4 +14,4 @@ class NoticeList {
   };
 }
 
-module.exports = NoticeList;
+module.exports = GetAllNotices;

@@ -26,12 +26,6 @@ const output = {
     return res.json(response);
   },
 
-  notice: async (req, res) => {
-    const notice = new Notice(req.body);
-    const response = await notice.showNotice();
-    return res.json(response);
-  },
-
   report: async (req, res) => {
     const report = new Report(req.body);
     const response = await report.showReport();
@@ -51,6 +45,16 @@ const process = {
     return res.json(response);
   },
   notice: {
+    get: async (req, res) => {
+      const notice = new Notice();
+      const response = await notice.getNoticeById(req.params.id);
+      return res.json(response);
+    },
+    getAll: async (req, res) => {
+      const notice = new Notice(req.body);
+      const response = await notice.getAllNotices();
+      return res.json(response);
+    },
     post: async (req, res) => {
       const notice = new Notice(req.body);
       const response = await notice.postNotice();
