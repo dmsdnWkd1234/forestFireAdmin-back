@@ -44,6 +44,13 @@ const process = {
     const response = await user.register();
     return res.json(response);
   },
+  mesh: {
+    get: async (req, res) => {
+      const mesh = new Mesh();
+      const response = await mesh.showMeshById(req.params.id);
+      return res.json(response);
+    },
+  },
   notice: {
     get: async (req, res) => {
       const notice = new Notice();

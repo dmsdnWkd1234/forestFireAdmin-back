@@ -7,6 +7,7 @@ const ctrl = require('./home.ctrl');
 
 router.get('/', ctrl.output.home);
 router.get('/mesh', ctrl.output.mesh);
+router.get('/mesh/:id', ctrl.process.mesh.get);
 
 router.get('/report', ctrl.output.report);
 
