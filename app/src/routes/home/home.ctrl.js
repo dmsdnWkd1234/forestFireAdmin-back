@@ -6,16 +6,6 @@ const Report = require('../../models/reports/Report');
 const User = require('../../models/user/User');
 
 const output = {
-  /**
-   * @swagger
-   * /:
-   *   get:
-   *     summary: 홈 페이지
-   *     description: 메인 홈 화면을 반환합니다.
-   *     responses:
-   *       200:
-   *         description: 성공
-   */
   home: (req, res) => {
     res.render('home');
   },
