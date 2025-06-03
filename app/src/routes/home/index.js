@@ -9,7 +9,7 @@ router.get('/', ctrl.output.home);
 router.get('/mesh', ctrl.output.mesh);
 router.get('/mesh/:id', ctrl.process.mesh.get);
 
-router.get('/report', ctrl.output.report);
+router.get('/api/report', ctrl.output.report);
 
 router.post('/login', ctrl.process.login);
 router.post('/register', ctrl.process.register);
