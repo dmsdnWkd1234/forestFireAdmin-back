@@ -20,7 +20,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           script: |
-            cd forest_fire/app
+            cd backend/forest_fire/app
 
             echo "NODE_ENV=dev" > .env
             echo "PORT=3002" >> .env
