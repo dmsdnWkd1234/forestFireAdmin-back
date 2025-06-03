@@ -1,24 +1,24 @@
-                name: Deploy to EC2
-                  uses: appleboy/ssh-action@v0.1.10
-                  with:
-                    host: ${{ secrets.EC2_HOST }}
-                    username: ubuntu
-                    key: ${{ secrets.EC2_KEY }}
-                    script: |
-                      cd forest_fire/app
+name: Deploy to EC2
+  uses: appleboy/ssh-action@v0.1.10
+  with:
+    host: ${{ secrets.EC2_HOST }}
+    username: ubuntu
+    key: ${{ secrets.EC2_KEY }}
+    script: |
+      cd forest_fire/app
 
-                      echo "NODE_ENV=dev" > .env
-                      echo "PORT=3002" >> .env
-                      echo "DB_HOST=forest-fire.cbm06os0m2be.ap-northeast-2.rds.amazonaws.com" >> .env
-                      echo "DB_USER=admin" >> .env
-                      echo "DB_PASSWORD=rladmsdn11!" >> .env
-                      echo "DB_DATABASE=fire_forest" >> .env
-                      echo "ADMIN_PASSKEY=ce404" >> .env
+      echo "NODE_ENV=dev" > .env
+      echo "PORT=3002" >> .env
+      echo "DB_HOST=forest-fire.cbm06os0m2be.ap-northeast-2.rds.amazonaws.com" >> .env
+      echo "DB_USER=admin" >> .env
+      echo "DB_PASSWORD=rladmsdn11!" >> .env
+      echo "DB_DATABASE=fire_forest" >> .env
+      echo "ADMIN_PASSKEY=ce404" >> .env
 
-                      git pull origin develop
+      git pull origin develop
 
-                      sudo docker stop forest-back || true
-                      sudo docker rm forest-back || true
+      sudo docker stop forest-back || true
+      sudo docker rm forest-back || true
 
-                      sudo docker build -t forest-back .   # 👈 여기서 Dockerfile 있음
-                      sudo docker run -d -p 3002:3002 --name forest-back forest-back
+      sudo docker build -t forest-back .   # 👈 여기서 Dockerfile 있음
+      sudo docker run -d -p 3002:3002 --name forest-back forest-back
