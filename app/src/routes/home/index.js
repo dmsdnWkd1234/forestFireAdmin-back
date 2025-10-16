@@ -8,6 +8,7 @@ const ctrl = require('./home.ctrl');
 router.get('/', ctrl.output.home);
 router.get('/api/mesh', ctrl.output.mesh);
 router.get('/api/mesh/:id', ctrl.process.mesh.get);
+router.get('/api/meshByData', ctrl.process.mesh.getByData);
 
 router.get('/api/report', ctrl.output.report);
 

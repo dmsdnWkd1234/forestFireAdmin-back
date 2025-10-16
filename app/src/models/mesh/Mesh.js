@@ -21,6 +21,15 @@ class Mesh {
       return { success: false, msg: err };
     }
   }
+
+  async showMeshByData(options) {
+    try {
+      const response = await MeshHistoryStorage.getHistoryData(options);
+      return response;
+    } catch (err) {
+      return { success: false, msg: err.message };
+    }
+  }
 }
 
 module.exports = Mesh;
