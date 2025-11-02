@@ -19,7 +19,12 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: '*', // 혹은 'http://localhost:5173'
+    methods: ['GET', 'POST'],
+  })
+);
 
 //라우팅
 // (수정) require -> import, .js 확장자 추가 (나중에 home.js 파일 확인 필요)
