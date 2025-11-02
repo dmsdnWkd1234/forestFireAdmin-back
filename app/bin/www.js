@@ -2,6 +2,7 @@
 import app from '../app.js';
 import logger from '../src/config/logger.js';
 import dotenv from 'dotenv';
+import 'dotenv/config';
 
 dotenv.config();
 
