@@ -1,18 +1,22 @@
 {
   "dependencies": {
+    "@google/genai": "^1.28.0",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "latest": "^0.2.0",
     "mysql": "^2.18.1",
     "prettier": "^3.5.3",
+    "sqlite3": "^5.1.7",
     "winston": "^3.17.0",
     "ws": "^8.18.2"
   },
   "name": "login_lecture",
   "version": "1.0.0",
   "main": "app.js",
+  "type": "module",
   "bin": {
     "login_lecture": "bin/www.js"
   },

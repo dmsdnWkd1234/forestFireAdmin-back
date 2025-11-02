@@ -1,6 +1,8 @@
 'use strict';
 
-const db = require('../../config/db');
+// ESM import statement
+// (수정) .js 확장자 추가 필요 (db.js 파일 확인 필요)
+import db from '../../config/db.js';
 
 class UpdateNotice {
   static async update(notice) {
@@ -11,12 +13,14 @@ class UpdateNotice {
         query,
         [notice.title, notice.type, notice.content, notice.id],
         (err) => {
-          if (err) reject(`${err}`);
-          resolve({ success: true });
+          if (err)
+            reject(`${err}`); // Reject with error object/string
+          else resolve({ success: true }); // Resolve on success
         }
       );
     });
   }
 }
 
-module.exports = UpdateNotice;
+// (수정) module.exports -> export default
+export default UpdateNotice;
