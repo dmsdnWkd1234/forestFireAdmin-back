@@ -1,5 +1,7 @@
 // ESM import statement
 import mysql from 'mysql'; // require -> import
+import dotenv from 'dotenv';
+dotenv.config();
 
 // (수정 없음) process.env는 ESM에서도 동일하게 접근 가능
 const db = mysql.createPool({

@@ -7,13 +7,10 @@ import express from 'express'; // require -> import
 import bodyParser from 'body-parser'; // require -> import
 import dotenv from 'dotenv'; // require -> import
 import cors from 'cors'; // require -> import
-
-// (신규) ESM에서 __dirname 대체하기 위한 모듈
 import path from 'path';
 import { fileURLToPath } from 'url';
-
-const app = express();
 dotenv.config();
+const app = express();
 
 // (신규) ESM에서 __dirname, __filename 정의
 const __filename = fileURLToPath(import.meta.url);
