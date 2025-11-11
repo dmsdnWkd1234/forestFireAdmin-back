@@ -6,6 +6,8 @@ import Mesh from '../../models/mesh/Mesh.js';
 import Notice from '../../models/notice/Notice.js';
 import Report from '../../models/reports/Report.js';
 import User from '../../models/user/User.js';
+import Chat from './chat.js';
+import Dashboard from '../../models/dashboard/Dashboard.js';
 
 // (수정) module.exports 대신 export const 사용
 export const output = {
@@ -93,6 +95,28 @@ export const process = {
     update: async (req, res) => {
       const notice = new Notice(req.body);
       const response = await notice.updateNotice();
+      return res.json(response);
+    },
+  },
+  chat: {
+    post: async (req, res) => {
+      const chat = new Chat(req.body);
+      const response = await chat.postToAi();
+      return res.json({ reply: response.reply });
+    },
+  },
+  dashboard: {
+    get: async (req, res) => {
+      // !!! 디버깅용 로그 추가 !!!
+      console.log('--- Dashboard Request Body ---');
+      console.log(req.body); // req.body 전체를 찍어봅니다.
+
+      const { id } = req.body;
+      // !!! id 값 확인 !!!
+      console.log('Extracted ID:', id);
+
+      const dashboard = new Dashboard();
+      const response = await dashboard.MeshByIdAndTime(id);
       return res.json(response);
     },
   },

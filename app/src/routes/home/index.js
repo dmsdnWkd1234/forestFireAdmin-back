@@ -24,5 +24,12 @@ router.post('/api/createNotice', process.notice.post);
 router.delete('/api/deleteNotice', process.notice.delete);
 router.patch('/api/updateNotice', process.notice.update);
 
+//chat
+router.post('/api/postToAi', process.chat.post);
+router.get('api/getByAi');
+
+//dashboard
+router.post('/api/dashboard', process.dashboard.get);
+
 // (수정) module.exports -> export default
 export default router;
