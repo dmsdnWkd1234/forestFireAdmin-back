@@ -1,3 +1,4 @@
+import GetAbnormal from './getAbnormal.js';
 import MeshByIdAndTime from './MeshByIdAndTime.js';
 
 class Dashboard {
@@ -13,6 +14,18 @@ class Dashboard {
       return {
         success: false,
         msg: typeof err === 'string' ? err : '특정 메쉬 정보 조회 중 오류 발생',
+      };
+    }
+  }
+
+  async GetAbnormal() {
+    try {
+      const response = await GetAbnormal.GetAbnormal();
+      return response;
+    } catch (err) {
+      console.error('somthing wrong', err);
+      return {
+        success: false,
       };
     }
   }

@@ -29,7 +29,8 @@ router.post('/api/postToAi', process.chat.post);
 router.get('api/getByAi');
 
 //dashboard
-router.post('/api/dashboard', process.dashboard.get);
+router.post('/api/dashboard', process.dashboard.post);
+router.get('/api/dashboard/abnormal', process.dashboard.get);
 
 // (수정) module.exports -> export default
 export default router;

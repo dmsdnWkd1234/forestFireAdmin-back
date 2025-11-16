@@ -106,18 +106,21 @@ export const process = {
     },
   },
   dashboard: {
-    get: async (req, res) => {
-      // !!! 디버깅용 로그 추가 !!!
-      console.log('--- Dashboard Request Body ---');
-      console.log(req.body); // req.body 전체를 찍어봅니다.
-
+    post: async (req, res) => {
       const { id } = req.body;
-      // !!! id 값 확인 !!!
-      console.log('Extracted ID:', id);
-
       const dashboard = new Dashboard();
       const response = await dashboard.MeshByIdAndTime(id);
       return res.json(response);
+    },
+    get: async (req, res) => {
+      try {
+        const dashboard = new Dashboard();
+        const response = await dashboard.GetAbnormal();
+        return res.json(response);
+      } catch (err) {
+        console.error(err);
+        return res.status(500).json({ msg: '이상 데이터 조회 실패' });
+      }
     },
   },
 };
