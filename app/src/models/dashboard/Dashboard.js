@@ -1,4 +1,4 @@
-import GetAbnormal from './getAbnormal.js';
+import GetAbnormal from './GetAbnormal.js';
 import MeshByIdAndTime from './MeshByIdAndTime.js';
 
 class Dashboard {
