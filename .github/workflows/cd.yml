@@ -29,6 +29,7 @@ jobs:
             echo "DB_PASSWORD=rladmsdn11!" >> .env
             echo "DB_DATABASE=fire_forest" >> .env
             echo "ADMIN_PASSKEY=ce404" >> .env
+            echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
 
             git pull origin develop
 
