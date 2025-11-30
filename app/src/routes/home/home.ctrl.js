@@ -107,9 +107,9 @@ export const process = {
   },
   dashboard: {
     post: async (req, res) => {
-      const { id } = req.body;
+      const { id, range } = req.body;
       const dashboard = new Dashboard();
-      const response = await dashboard.MeshByIdAndTime(id);
+      const response = await dashboard.MeshByIdAndTime(id, range);
       return res.json(response);
     },
     get: async (req, res) => {

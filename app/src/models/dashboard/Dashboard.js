@@ -5,9 +5,9 @@ class Dashboard {
   constructor(body) {
     this.body = body;
   }
-  async MeshByIdAndTime(id) {
+  async MeshByIdAndTime(id, range) {
     try {
-      const response = await MeshByIdAndTime.getMeshByIdAndTime(id);
+      const response = await MeshByIdAndTime.getMeshByIdAndTime(id, range);
       return response;
     } catch (err) {
       console.error(`Error in showMeshById for ID ${id}:`, err); // 개선 제안: 에러 로깅
